@@ -1,5 +1,9 @@
 ﻿@using System.Net.Http
 @using System.Net.Http.Json
+@using Microsoft.AspNetCore.Authorization
+
+@using Microsoft.AspNetCore.Components.Authorization
+
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
@@ -8,8 +12,9 @@
 @using Microsoft.JSInterop
 @using Portal.UI
 @using Portal.UI.Shared
-
 @using MudBlazor
 @using Blazored.LocalStorage;
 @using Blazored.FluentValidation;
 @using Portal.Shared.Settings;
+@using Portal.UI.Pages.Authentication
+@attribute [Authorize]

@@ -20,3 +20,12 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+/Portal/.vs
+/Portal/Portal.Components/bin/Debug/net6.0
+/Portal/Portal.Components/obj
+/Portal/Portal.Services/bin/Debug/net6.0
+/Portal/Portal.Services/obj
+/Portal/Portal.Shared/bin/Debug/net6.0
+/Portal/Portal.Shared/obj
+/Portal/Portal.UI/bin/Debug/net6.0
+/Portal/Portal.UI/obj

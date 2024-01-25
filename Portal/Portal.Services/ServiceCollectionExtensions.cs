@@ -24,10 +24,10 @@ namespace Portal.Services
         {
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<AuthStateProvider>();
-            services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
+            //services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
 
             // 
-            services.AddTransient<IAuthenticationService, AuthenticationService>();
+            //services.AddTransient<IAuthenticationService, AuthenticationService>();
         }
     }
 }

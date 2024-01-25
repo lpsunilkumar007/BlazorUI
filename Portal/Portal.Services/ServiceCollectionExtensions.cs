@@ -22,12 +22,10 @@ namespace Portal.Services
         /// <param name="services"></param>
         public static void AddPortalServices(this IServiceCollection services)
         {
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
-            services.AddScoped<AuthStateProvider>();
-            //services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
-
-            // 
-            //services.AddTransient<IAuthenticationService, AuthenticationService>();
+            services
+           .AddScoped<IAuthenticationService, AuthenticationService>()
+           .AddScoped<AuthStateProvider>()
+           .AddScoped<AuthenticationStateProvider, AuthStateProvider>();
         }
     }
 }

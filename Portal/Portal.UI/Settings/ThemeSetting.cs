@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Portal.Shared.Settings
+namespace Portal.UI.Settings
 {
     public class ThemeSetting
     {

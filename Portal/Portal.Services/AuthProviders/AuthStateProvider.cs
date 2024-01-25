@@ -23,7 +23,6 @@ namespace Portal.Services.AuthProviders
         public async Task StateChangedAsync()
         {
             var authState = Task.FromResult(await GetAuthenticationStateAsync());
-
             NotifyAuthenticationStateChanged(authState);
 
         }

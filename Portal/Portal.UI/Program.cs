@@ -27,10 +27,6 @@ builder.Services.AddHttpClient("PortalApiHttpClient", httpClient =>
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddBlazoredLocalStorage();
-builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
-
-
-
 
 
 builder.Services.AddPortalServices();

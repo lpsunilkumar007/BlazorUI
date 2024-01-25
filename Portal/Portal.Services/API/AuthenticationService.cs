@@ -1,24 +1,15 @@
 ﻿using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Routing;
-using Microsoft.Extensions.Localization;
 using Portal.Shared.Models.Api.Request.Identity;
 using Portal.Shared.Models.Api.Response;
 using Portal.Shared.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Net;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using Portal.Shared.Constants.Storage;
 using Portal.Shared.Routes;
 using Portal.Services.AuthProviders;
 using Portal.Shared.Extensions;
-using System.Net.Http;
 namespace Portal.Services.API
 {
     internal class AuthenticationService : IAuthenticationService

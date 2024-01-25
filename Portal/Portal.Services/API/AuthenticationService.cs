@@ -18,6 +18,7 @@ using Portal.Shared.Constants.Storage;
 using Portal.Shared.Routes;
 using Portal.Services.AuthProviders;
 using Portal.Shared.Extensions;
+using System.Net.Http;
 namespace Portal.Services.API
 {
     internal class AuthenticationService : IAuthenticationService
@@ -29,11 +30,11 @@ namespace Portal.Services.API
         #endregion
 
         public AuthenticationService(
-            HttpClient httpClient,
+            IHttpClientFactory httpClientFactory,
             ILocalStorageService localStorage,
             AuthenticationStateProvider authenticationStateProvider)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClientFactory.CreateClient("PortalApiHttpClient");
             _localStorage = localStorage;
             _authenticationStateProvider = authenticationStateProvider;
         }

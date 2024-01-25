@@ -14,10 +14,28 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+builder.Services.AddHttpClient("PortalApiHttpClient", httpClient =>
+{
+    var url = builder.Configuration["PortalApiUrl"];
+    if (string.IsNullOrEmpty(url))
+        throw new Exception("ApiUrl has not been correctly configured. Aborting startup...");
+    httpClient.BaseAddress = new Uri(url);
+});
+
+//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
-builder.Services.AddBlazoredLocalStorage()
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
+
+
+
+
+
+builder.Services.AddPortalServices();
+
+builder.Services
                 .AddMudServices(configuration =>
                 {
                     configuration.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
@@ -26,5 +44,4 @@ builder.Services.AddBlazoredLocalStorage()
                     configuration.SnackbarConfiguration.VisibleStateDuration = 3000;
                     configuration.SnackbarConfiguration.ShowCloseIcon = false;
                 });
-builder.Services.AddPortalServices();
 await builder.Build().RunAsync();

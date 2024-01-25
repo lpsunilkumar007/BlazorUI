@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Portal.Services.API;
+using Portal.Services.API.Base;
 using Portal.Services.AuthProviders;
+using Portal.Services.Managers;
+using Portal.Shared.Interfaces;
 using Portal.Shared.Services;
 using System;
 using System.Collections.Generic;

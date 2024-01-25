@@ -30,3 +30,9 @@ TestResults.xml
 /Portal/Portal.UI/bin/Debug/net6.0
 /Portal/Portal.UI/obj
 /.vs
+/Portal/Maui.Hyb/bin/Debug
+/Portal/Maui.Hyb/obj
+/Portal/Maui.Shared/obj
+/Portal/Portal.Services/bin/Debug/net7.0
+/Portal/Portal.Shared/bin/Debug/net7.0
+/Portal/Portal.UI/bin/Debug/net7.0

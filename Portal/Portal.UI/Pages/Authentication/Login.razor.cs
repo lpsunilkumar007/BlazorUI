@@ -1,45 +1,51 @@
 ﻿using Blazored.FluentValidation;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using System.Net;
 using System.Security.Claims;
-using System.ComponentModel.DataAnnotations;
+using Portal.Shared.Models.Api.Request.Identity;
+
 
 namespace Portal.UI.Pages.Authentication
 {
     public partial class Login
     {
-
+        #region Prop
         private FluentValidationValidator _fluentValidationValidator;
         private bool Validated => _fluentValidationValidator.Validate(options => { options.IncludeAllRuleSets(); });
         private TokenRequest _tokenModel = new();
-
-        protected override async Task OnInitializedAsync()
-        {
-            //var state = await _stateProvider.GetAuthenticationStateAsync();
-            //if (state != new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity())))
-            //{
-            //    _navigationManager.NavigateTo("/");
-            //}
-        }
-
-        private async Task SubmitAsync()
-        {
-        //    var result = await _authenticationManager.Login(_tokenModel);
-        //    if (!result.Succeeded)
-        //    {
-        //        foreach (var message in result.Messages)
-        //        {
-        //            _snackBar.Add(message, Severity.Error);
-        //        }
-        //    }
-        }
 
         private bool _passwordVisibility;
         private InputType _passwordInput = InputType.Password;
         private string _passwordInputIcon = Icons.Material.Filled.VisibilityOff;
 
+        #endregion
+        protected override async Task OnInitializedAsync()
+        {
+            var state = await _stateProvider.GetAuthenticationStateAsync();
+            if (state != new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity())))
+            {
+                _navigationManager.NavigateTo("/");
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private async Task SubmitAsync()
+        {
+            var result = await _authenticationService.Login(_tokenModel);
+            if (!result.Succeeded)
+            {
+                foreach (var message in result.Messages)
+                {
+                    _snackBar.Add(message, Severity.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         void TogglePasswordVisibility()
         {
             if (_passwordVisibility)
@@ -69,12 +75,5 @@ namespace Portal.UI.Pages.Authentication
         }
     }
 
-    public class TokenRequest
-    {
-        [Required]
-        public string Email { get; set; }
 
-        [Required]
-        public string Password { get; set; }
-    }
 }

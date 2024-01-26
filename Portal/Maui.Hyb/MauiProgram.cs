@@ -1,4 +1,5 @@
-﻿using Maui.Hyb.Data;
+﻿using Blazored.LocalStorage;
+using Maui.Hyb.Data;
 using Microsoft.Extensions.Logging;
 using MudBlazor;
 using MudBlazor.Services;
@@ -21,11 +22,20 @@ namespace Maui.Hyb
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Logging.AddDebug();
 #endif
+            builder.Services.AddHttpClient("PortalApiHttpClient", httpClient =>
+            {
+                var url = "https://localhost:5001";
+                //builder.Configuration["PortalApiUrl"];
+                if (string.IsNullOrEmpty(url))
+                    throw new Exception("ApiUrl has not been correctly configured. Aborting startup...");
+                httpClient.BaseAddress = new Uri(url);
+            });
+            builder.Services.AddAuthorizationCore();
+            builder.Services.AddBlazoredLocalStorage();
 
-            builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddPortalServices();
             builder.Services
                 .AddMudServices(configuration =>

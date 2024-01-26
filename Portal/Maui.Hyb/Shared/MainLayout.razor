@@ -1,17 +1,20 @@
-﻿@inherits LayoutComponentBase
+﻿@using Maui.Hyb.Settings
+@inherits LayoutComponentBase
+<MudThemeProvider Theme="ThemeSetting.DefaultTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<AuthorizeView>
+    <NotAuthorized>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+        <MudContainer MaxWidth="MaxWidth.Small" Class="d-flex align-center" Style="height: 100vh;">
+            <MudPaper Elevation="25" Class="pa-8" Style="width: 500px;">
+                @Body
+            </MudPaper>
+        </MudContainer>
+    </NotAuthorized>
+    <Authorized>
+        <MudLayout>
             @Body
-        </article>
-    </main>
-</div>
+        </MudLayout>
+    </Authorized>
+</AuthorizeView>

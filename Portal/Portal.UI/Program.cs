@@ -1,13 +1,9 @@
 using Blazored.LocalStorage;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor;
 using MudBlazor.Services;
-using Portal.Services.AuthProviders;
-using Portal.Shared.Services;
 using Portal.UI;
-using Portal.Services.API;
 using Portal.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -30,6 +26,8 @@ builder.Services.AddBlazoredLocalStorage();
 
 
 builder.Services.AddPortalServices();
+
+
 
 builder.Services
                 .AddMudServices(configuration =>

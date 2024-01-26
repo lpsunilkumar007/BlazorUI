@@ -36,3 +36,7 @@ TestResults.xml
 /Portal/Portal.Services/bin/Debug/net7.0
 /Portal/Portal.Shared/bin/Debug/net7.0
 /Portal/Portal.UI/bin/Debug/net7.0
+/Portal/Maui.Shared/bin/Debug
+/Portal/Portal.Components/bin/Debug/net7.0
+/Portal/Maui.Hyb/bin/Release/net7.0-windows10.0.19041.0/win10-x64
+/Portal/Portal.Components/bin/Release/net7.0

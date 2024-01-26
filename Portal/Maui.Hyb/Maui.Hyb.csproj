@@ -50,20 +50,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Pages\Authentication\Login.razor.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="Pages\Authentication\Login.razor" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
         <PackageReference Include="MudBlazor" Version="6.14.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\Authentication\" />
+      <None Include="Pages\Authentication\Login.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Portal.Services\Portal.Services.csproj" />
     </ItemGroup>
 
 </Project>

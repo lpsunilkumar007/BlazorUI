@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MudBlazor;
 using MudBlazor.Services;
-
+using Portal.Services;
 
 namespace Maui.Hyb
 {
@@ -26,7 +26,7 @@ namespace Maui.Hyb
 #endif
 
             builder.Services.AddSingleton<WeatherForecastService>();
-         
+            builder.Services.AddPortalServices();
             builder.Services
                 .AddMudServices(configuration =>
                 {

@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui", "Maui", "{04E7DE65-9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Hyb", "Maui.Hyb\Maui.Hyb.csproj", "{DC30E812-A5B1-445D-8F2E-907206D16E3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Shared", "Maui.Shared\Maui.Shared.csproj", "{B1CE679A-4576-4517-9E3E-80874625C7BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Shared", "Maui.Shared\Maui.Shared.csproj", "{B1CE679A-4576-4517-9E3E-80874625C7BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

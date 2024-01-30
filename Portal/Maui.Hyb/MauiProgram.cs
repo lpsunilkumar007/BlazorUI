@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using MudBlazor;
 using MudBlazor.Services;
 using Portal.Services;
+using Portal.Shared.Messaging;
 
 namespace Maui.Hyb
 {
@@ -46,6 +47,15 @@ namespace Maui.Hyb
                     configuration.SnackbarConfiguration.VisibleStateDuration = 3000;
                     configuration.SnackbarConfiguration.ShowCloseIcon = false;
                 });
+
+            //this is to check whether app is having Internet connection or now and send the message 
+            ConnectionMonitor.ConnectionStatusChanged += async (sender, isConnected) =>
+            {
+                if (!isConnected)
+                {
+                    await LpMessagingCentre.ErrorMessage.SendAsync("Internet has gone");
+                }
+            };
             return builder.Build();
         }
     }

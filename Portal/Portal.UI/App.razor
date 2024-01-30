@@ -1,4 +1,5 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@using Portal.Shared.Messaging
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
             <NotAuthorized>
@@ -15,3 +16,65 @@
         </CascadingAuthenticationState>
     </NotFound>
 </Router>
+
+
+@code
+{
+    public App()
+    {
+        LpMessagingCentre.Exception.Subscribe(this, async (ex) =>
+        {
+
+            _snackBar.Add(ex.Message, Severity.Error);
+        });
+
+        // LpMessagingCentre.ApiException.Subscribe(this, async (ex) =>
+        // {
+        //     if (_infoMessage == null)
+        //         return;
+
+        //     await _infoMessage.ShowMessageAsync(ex);
+        // });
+        LpMessagingCentre.InfoMessage.Subscribe(this, async (message) =>
+        {
+
+
+            _snackBar.Add(message, Severity.Info);
+        });
+        LpMessagingCentre.WarningMessage.Subscribe(this, async (message) =>
+        {
+
+
+            _snackBar.Add(message, Severity.Warning);
+        });
+        LpMessagingCentre.ErrorMessage.Subscribe(this, async (message) =>
+        {
+            _snackBar.Add(message, Severity.Error);
+        });
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        _navigationManager.LocationChanged += OnLocationChanged;
+
+    }
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        // _queryStringManager.RewriteGlobalPropertiesParam(new GlobalPropertyIds(GlobalCompanies.Selected?.Id, GlobalBrands.Selected?.Id, GlobalStores.Selected?.StoreId));
+
+        // InvokeAsync(async () =>
+        // {
+        //     await Task.Delay(1);  // wait for blazor to populate route parameters
+        //     await _jsRunTime.InvokeVoidAsync("notifyPageChanged"); // This is needed to ProductFruits.
+        // });
+    }
+
+    public void Dispose()
+    {
+
+        _navigationManager.LocationChanged -= OnLocationChanged;
+        LpMessagingCentre.UnsubscribeFromAll(this);
+    }
+}

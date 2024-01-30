@@ -1,0 +1,14 @@
+﻿<lp-page-container>    
+    <lp-page-content style="@GetBackgroundStyle()">@ChildContent</lp-page-content>
+</lp-page-container>
+
+@code {
+    
+    [Parameter] public RenderFragment? ChildContent { get; init; }
+    [Parameter] public bool HideBackground { get; init; } = false;
+
+    private string? GetBackgroundStyle()
+    {
+        return HideBackground ? null : "background-color: var(--content-background-color);";
+    }
+}

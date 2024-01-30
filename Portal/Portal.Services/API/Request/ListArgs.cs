@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Portal.Services.API.Request
+﻿namespace Portal.Services.API.Request
 {
     public record ListArgs : Args
     {

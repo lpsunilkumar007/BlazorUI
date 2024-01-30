@@ -1,0 +1,24 @@
+﻿@page "/user"
+@using Portal.UI.Shared.Components.Grid;
+@using Portal.Shared.Interfaces
+@using Portal.Shared.Models.Entities
+@using Portal.Shared.Models.Api.Request
+
+
+
+<LPGrid TEntity="User"
+        TApiService="IUserApiService"
+        TListArgs="UserListArgs"
+        ListArgs="_userListArgs">
+    <LPColumns>
+       @* <PropertyColumn  Property="x => x"/>  *@
+      
+    </LPColumns>
+</LPGrid>
+
+<p> Helloooo</p>
+
+@code {
+    private UserListArgs _userListArgs = new();
+}
+

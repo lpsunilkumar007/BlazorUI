@@ -5,6 +5,10 @@ using Portal.Services.API.Base;
 using Portal.Services.AuthProviders;
 using Portal.Services.Managers;
 using Portal.Shared.Interfaces;
+using Portal.Shared.Models.Api;
+using Portal.Shared.Models.Api.Request;
+using Portal.Shared.Models.Api.Response;
+using Portal.Shared.Models.Entities;
 using Portal.Shared.Services;
 using System;
 using System.Collections.Generic;
@@ -25,7 +29,11 @@ namespace Portal.Services
             services
            .AddScoped<IAuthenticationService, AuthenticationService>()
            .AddScoped<AuthStateProvider>()
-           .AddScoped<AuthenticationStateProvider, AuthStateProvider>();
+           .AddScoped<AuthenticationStateProvider, AuthStateProvider>()
+                     .AddScoped<ApplicationStateManager>();
+
+
         }
     }
 }
+

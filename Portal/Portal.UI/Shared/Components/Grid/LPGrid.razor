@@ -1,0 +1,22 @@
+﻿@using Portal.Shared.Models.Api.Request
+@using Portal.Shared.Interfaces
+@using Portal.UI.Shared.Components.Base
+@using Portal.Shared;
+
+@typeparam TEntity where TEntity : class, IEntity, new()
+@typeparam TApiService where TApiService : class, IBaseApiEntityService<TEntity, TListArgs>
+@typeparam TListArgs where TListArgs : ListArgs, new()
+@inherits LPBaseEntityComponent<TEntity, TApiService, TListArgs>
+
+<div>
+
+    <MudDataGrid ServerData="@(new Func<GridState<TEntity>, Task<GridData<TEntity>>>(LoadGridData))"
+                 Bordered="true"
+                 Dense="true"
+                 EditTrigger="DataGridEditTrigger.OnRowClick" >
+        <Columns>            
+            @LPColumns
+        </Columns>
+     </MudDataGrid>
+
+ </div>

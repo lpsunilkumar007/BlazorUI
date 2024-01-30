@@ -1,17 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
-using Portal.Services.API.Request;
-using Portal.Services.API.Response;
+using Portal.Shared.Models.Api.Request;
+using Portal.Shared.Models.Api.Response;
 using Portal.Shared;
 using Portal.Shared.Models;
 using Portal.Shared.Models.Api;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using Portal.Shared.Extensions;
 namespace Portal.Services.API.Base
 {
